@@ -29,3 +29,12 @@ CREATE STREAM raw_votes \
                                                                 type VARCHAR>>>>, \
         type ARRAY<VARCHAR> \
     ) WITH (KAFKA_TOPIC='raw-votes', VALUE_FORMAT='JSON');
+
+CREATE STREAM individual_votes \
+    ( \
+        _about VARCHAR, \
+        member ARRAY<STRUCT<_about VARCHAR, label STRUCT<_value VARCHAR>>>, \
+        memberParty VARCHAR, \
+        memberPrinted STRUCT<_value VARCHAR>, \
+        type VARCHAR \
+    ) WITH (KAFKA_TOPIC='individual-votes', VALUE_FORMAT='JSON');
