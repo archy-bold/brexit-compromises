@@ -65,10 +65,9 @@ CREATE TABLE MINISTERS AS \
     GROUP BY member_id, member, party;
 
 -- And the parties
-CREATE STREAM PARTIES_STREAM \
-WITH (VALUE_FORMAT='AVRO') AS \
-SELECT memberParty as name FROM individual_votes \
-PARTITION BY name;
-
-CREATE TABLE PARTIES \
-WITH (KAFKA_TOPIC='PARTIES_STREAM', VALUE_FORMAT='AVRO', KEY='name');
+CREATE TABLE PARTIES AS \
+    SELECT party, \
+    SUM(aye) AS ayes, \
+    SUM(nay) AS nays \
+    FROM VOTES_STREAM \
+    GROUP BY party;
