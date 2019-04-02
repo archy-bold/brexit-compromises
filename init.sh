@@ -4,7 +4,7 @@ dir="${0%/*}"
 
 # Create the topics
 kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic raw-votes
-kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic individual-votes
+kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 4 --topic individual-votes
 
 # Create the streams
 ksql < $dir/ksql/streams.ksql
