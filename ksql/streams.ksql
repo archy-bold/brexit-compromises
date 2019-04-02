@@ -57,13 +57,12 @@ FROM individual_votes \
 PARTITION BY id;
 
 -- Get MPs into a table
-CREATE STREAM MINISTERS_STREAM \
-WITH (VALUE_FORMAT='AVRO') AS \
-SELECT member[0]->_about AS id, memberPrinted->_value AS name, memberParty as party FROM individual_votes \
-PARTITION BY id;
-
-CREATE TABLE MINISTERS \
-WITH (KAFKA_TOPIC='MINISTERS_STREAM', VALUE_FORMAT='AVRO', KEY='id');
+CREATE TABLE MINISTERS AS \
+    SELECT member_id, member as name, party, \
+    SUM(aye) AS ayes, \
+    SUM(nay) AS nays \
+    FROM VOTES_STREAM \
+    GROUP BY member_id, member, party;
 
 -- And the parties
 CREATE STREAM PARTIES_STREAM \
