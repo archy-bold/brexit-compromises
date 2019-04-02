@@ -41,6 +41,21 @@ CREATE STREAM individual_votes \
         type VARCHAR \
     ) WITH (KAFKA_TOPIC='individual-votes', VALUE_FORMAT='JSON');
 
+-- Get them into a votes stream
+CREATE STREAM VOTES_STREAM \
+WITH (VALUE_FORMAT='AVRO') AS \
+SELECT _about AS id, ROWKEY AS division_id, member[0]->_about AS member_id, memberPrinted->_value AS member, memberParty as party, \
+CASE \
+   WHEN type = 'http://data.parliament.uk/schema/parl#AyeVote' THEN 1 \
+   ELSE 0 \
+ END AS aye, \
+ CASE \
+    WHEN type = 'http://data.parliament.uk/schema/parl#NoVote' THEN 1 \
+    ELSE 0 \
+  END AS nay \
+FROM individual_votes \
+PARTITION BY id;
+
 -- Get MPs into a table
 CREATE STREAM MINISTERS_STREAM \
 WITH (VALUE_FORMAT='AVRO') AS \

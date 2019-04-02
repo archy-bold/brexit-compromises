@@ -10,6 +10,7 @@ kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partit
 declare -A schemas=( \
 ["MINISTERS_STREAM"]="$dir/schema/ministers.avsc" \
 ["PARTIES_STREAM"]="$dir/schema/parties.avsc" \
+["VOTES_STREAM"]="$dir/schema/votes.avsc" \
 )
 
 for topic in "${!schemas[@]}";

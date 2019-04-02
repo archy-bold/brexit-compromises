@@ -1,0 +1,14 @@
+{
+  "type": "record",
+  "name": "Vote",
+  "namespace": "io.confluent.ksql.avro_schemas",
+  "fields": [
+    { "name": "ID", "type": [ "null", "string" ], "default": null },
+    { "name": "DIVISION_ID", "type": [ "null", "string" ], "default": null },
+    { "name": "MEMBER_ID", "type": [ "null", "string" ], "default": null },
+    { "name": "MEMBER", "type": [ "null", "string" ], "default": null },
+    { "name": "PARTY", "type": [ "null", "string" ], "default": null },
+    { "name": "AYE", "type": [ "null", "int" ], "default": null },
+    { "name": "NAY", "type": [ "null", "int" ], "default": null }
+  ]
+}
