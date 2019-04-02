@@ -7,4 +7,5 @@ SELECT * from VOTES_STREAM WHERE aye = 1 AND party = 'Democratic Unionist Party'
 -- One supproting vote by party
 SELECT SUM(ayes), party from MINISTERS_PARTIES  WHERE ayes = 1 GROUP BY party;
 
-SELECT name, party, ayes, nays from MINISTERS_PARTIES WHERE ayes = 1 ;
+-- Other MPs supporting one option
+SELECT name, party, ayes, nays from MINISTERS_PARTIES WHERE ayes = 1 AND nays > 6 AND party != 'Democratic Unionist Party';
