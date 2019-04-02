@@ -62,11 +62,11 @@ PARTITION BY id;
 
 -- Get MPs into a table
 CREATE TABLE MINISTERS AS \
-    SELECT member_id, member as name, party, \
+    SELECT member_id, member as name, \
     SUM(aye) AS ayes, \
     SUM(nay) AS nays \
     FROM VOTES_STREAM \
-    GROUP BY member_id, member, party;
+    GROUP BY member_id, member;
 
 -- And the parties
 CREATE TABLE PARTIES AS \
