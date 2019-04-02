@@ -1,0 +1,31 @@
+CREATE STREAM raw_votes \
+    ( \
+        format  VARCHAR, \
+        version VARCHAR, \
+        result STRUCT<_about                VARCHAR, \
+                    definition              VARCHAR, \
+                    extendedMetadataVersion VARCHAR, \
+                    primaryTopic            STRUCT<_about VARCHAR, \
+                                                AbstainCount ARRAY<STRUCT<_value INTEGER>>, \
+                                                AyesCount ARRAY<STRUCT<_value INTEGER>>, \
+                                                DeferredVote BOOLEAN, \
+                                                Didnotvotecount ARRAY<STRUCT<_value INTEGER>>, \
+                                                Errorvotecount ARRAY<STRUCT<_value INTEGER>>, \
+                                                Margin ARRAY<STRUCT<_value INTEGER>>, \
+                                                Noesvotecount ARRAY<STRUCT<_value INTEGER>>, \
+                                                Noneligiblecount ARRAY<STRUCT<_value INTEGER>>, \
+                                                Suspendedorexpelledvotescount ARRAY<STRUCT<_value INTEGER>>, \
+                                                date STRUCT<_value VARCHAR, _datatype VARCHAR>, \
+                                                divisionNumber INTEGER, \
+                                                isPrimaryTopicOf VARCHAR, \
+                                                legislature ARRAY<VARCHAR>, \
+                                                session ARRAY<VARCHAR>, \
+                                                title VARCHAR, \
+                                                uin VARCHAR, \
+                                                vote ARRAY<STRUCT<_about VARCHAR, \
+                                                                member ARRAY<STRUCT<_about VARCHAR, label STRUCT<_value VARCHAR>>>, \
+                                                                memberParty VARCHAR, \
+                                                                memberPrinted STRUCT<_value VARCHAR>, \
+                                                                type VARCHAR>>>>, \
+        type ARRAY<VARCHAR> \
+    ) WITH (KAFKA_TOPIC='raw-votes', VALUE_FORMAT='JSON');
