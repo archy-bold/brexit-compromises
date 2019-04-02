@@ -44,7 +44,11 @@ CREATE STREAM individual_votes \
 -- Get them into a votes stream
 CREATE STREAM VOTES_STREAM \
 WITH (VALUE_FORMAT='AVRO') AS \
-SELECT _about AS id, ROWKEY AS division_id, member[0]->_about AS member_id, memberPrinted->_value AS member, memberParty as party, \
+SELECT _about AS id, ROWKEY AS division_id, member[0]->_about AS member_id, memberPrinted->_value AS member, \
+CASE \
+   WHEN memberParty = 'Labour (Co-op)' THEN 'Labour' \
+   ELSE memberParty \
+ END AS party, \
 CASE \
    WHEN type = 'http://data.parliament.uk/schema/parl#AyeVote' THEN 1 \
    ELSE 0 \
