@@ -78,12 +78,25 @@ CREATE TABLE MINISTERS_AGGREGATED AS \
     GROUP BY member_id;
 
 -- And the parties
-CREATE TABLE PARTIES AS \
+CREATE TABLE PARTIES_COUNT AS \
+    SELECT party, COUNT(*) AS mps_count \
+    FROM MINISTERS \
+    GROUP BY party;
+
+CREATE TABLE PARTIES_AGGREGATED AS \
     SELECT party, \
     SUM(aye) AS ayes, \
     SUM(nay) AS nays \
     FROM VOTES_STREAM \
     GROUP BY party;
+
+CREATE TABLE PARTIES AS \
+    SELECT PARTIES_AGGREGATED.party AS party, ayes, nays, mps_count, \
+    CAST(ayes AS DOUBLE) / CAST(mps_count AS DOUBLE) AS ayes_per_mp, \
+    CAST(nays AS DOUBLE) / CAST(mps_count AS DOUBLE) AS nays_per_mp, \
+    (CAST(ayes AS DOUBLE) / CAST(mps_count AS DOUBLE)) / (CAST(nays AS DOUBLE) / CAST(mps_count AS DOUBLE)) AS ayes_nays_ratio
+    FROM PARTIES_AGGREGATED \
+    LEFT JOIN PARTIES_COUNT ON PARTIES_AGGREGATED.ROWKEY = PARTIES_COUNT.ROWKEY;
 
 CREATE TABLE MINISTERS_PARTIES AS \
     SELECT member_id, name, party, ayes, nays \
