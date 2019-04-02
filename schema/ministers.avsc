@@ -1,0 +1,10 @@
+{
+  "type": "record",
+  "name": "Minister",
+  "namespace": "io.confluent.ksql.avro_schemas",
+  "fields": [
+    { "name": "ID", "type": [ "null", "string" ], "default": null },
+    { "name": "NAME", "type": [ "null", "string" ], "default": null },
+    { "name": "PARTY", "type": [ "null", "string" ], "default": null }
+  ]
+}

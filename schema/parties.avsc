@@ -1,0 +1,8 @@
+{
+  "type": "record",
+  "name": "Party",
+  "namespace": "io.confluent.ksql.avro_schemas",
+  "fields": [
+    { "name": "NAME", "type": [ "null", "string" ], "default": null }
+  ]
+}
