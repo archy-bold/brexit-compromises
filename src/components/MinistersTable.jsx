@@ -25,7 +25,7 @@ const columns = [
     {
         Header: 'Name',
         accessor: 'name',
-        filterMethod: (filter, row) => row[filter.id].toLowerCase().indexOf(filter.value) > -1,
+        filterMethod: (filter, row) => row[filter.id].toLowerCase().indexOf(filter.value.toLowerCase()) > -1,
     },
     {
         Header: 'Party',
