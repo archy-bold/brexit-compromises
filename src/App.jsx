@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Jumbotron } from 'react-bootstrap';
 import PartiesTable from './components/PartiesTable';
+import MinistersTable from './components/MinistersTable';
 
 const App = () => (
     <div className="App">
@@ -19,18 +20,34 @@ const App = () => (
             </Container>
         </Jumbotron>
         <Container>
-            <h2>Votes by Party</h2>
-            <p>
-                This table shows the voting breakdown by party with the final
-                column showing the ratio of ayes to nays that the average MP
-                voted for.
-            </p>
-            <p>
-                The default sorting (by aye:nay ratio) highlights which parties
-                were more likely to vote for options than against.
-            </p>
-            <p>All averages are rounded to the nearest two decimal points.</p>
-            <PartiesTable />
+            <div className="mb-4" id="votes-by-party">
+                <h2>Votes by Party</h2>
+                <p>
+                    This table shows the voting breakdown by party with the final
+                    column showing the ratio of ayes to nays that the average MP
+                    voted for.
+                </p>
+                <p>
+                    The default sorting (by aye:nay ratio) highlights which parties
+                    were more likely to vote for options than against.
+                </p>
+                <p>All averages are rounded to the nearest two decimal points.</p>
+                <PartiesTable />
+            </div>
+
+            <div className="mb-4" id="votes-by-minister">
+                <h2>Votes by Minister</h2>
+                <p>
+                    This table shows the voting breakdown by minister with the final
+                    column showing the ratio of ayes to nays that the MP voted for.
+                </p>
+                <p>
+                    The default sorting (by aye:nay ratio) highlights which MP
+                    was more likely to vote for options than against.
+                </p>
+                <p>All averages are rounded to the nearest two decimal points.</p>
+                <MinistersTable />
+            </div>
         </Container>
     </div>
 );

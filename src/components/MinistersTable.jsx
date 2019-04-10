@@ -5,12 +5,12 @@ import data from '../data';
 
 const columns = [
     {
-        Header: 'Party',
-        accessor: 'party',
+        Header: 'Name',
+        accessor: 'name',
     },
     {
-        Header: 'Number of MPs',
-        accessor: 'num_mps',
+        Header: 'Party',
+        accessor: 'party',
     },
     {
         Header: 'Ayes',
@@ -21,27 +21,18 @@ const columns = [
         accessor: 'nays',
     },
     {
-        Header: 'Avg Ayes / MP',
-        accessor: 'ayes_per_mp',
-        Cell: NumberCell,
-    },
-    {
-        Header: 'Avg Nays / MP',
-        accessor: 'nays_per_mp',
-        Cell: NumberCell,
-    },
-    {
+        id: 'ayes_nays_ratio',
         Header: 'Ratio Ayes:Nays',
-        accessor: 'ayes_nays_ratio',
+        accessor: m => m.nays === 0 ? 'N/A' : m.ayes / m.nays,
         Cell: NumberCell,
     },
 ];
 
-const PartiesTable = () => (
+const MinistersTable = () => (
     <div>
 
         <ReactTable
-            data={data.parties}
+            data={data.ministers}
             columns={columns}
             defaultSorted={[
                 {
@@ -49,10 +40,11 @@ const PartiesTable = () => (
                     desc: true,
                 }
             ]}
+            defaultPageSize={700}
             showPagination={false}
             minRows={0}
             />
     </div>
 );
 
-export default PartiesTable;
+export default MinistersTable;
