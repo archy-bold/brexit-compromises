@@ -1,3 +1,7 @@
 body, section {
     padding-top: 56px;
 }
+
+.vote-splits-bar-chart{
+    height: 60vh;
+}

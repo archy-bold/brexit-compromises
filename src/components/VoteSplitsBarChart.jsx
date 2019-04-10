@@ -70,7 +70,7 @@ const VoteSplitsBarChart = (props) => {
                             afterTitle: () => props.tooltiptTitle,
                         },
     				},
-    				responsive: true,
+    				maintainAspectRatio: false,
     				scales: {
     					xAxes: [{
                             scaleLabel: {
