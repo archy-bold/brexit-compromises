@@ -44,8 +44,8 @@ const App = () => (
                     motions than they would vote against would be more willing to
                     compromise on Brexit options.
                 </p>
-                <VoteSplitsBarChart col="ayes" label="Number of Options Voted For" title="Party Split by Options Voted For" />
-                <VoteSplitsBarChart col="nays" label="Number of Options Voted Againt" title="Party Split by Options Voted Against" />
+                <VoteSplitsBarChart col="ayes" tooltiptTitle="Votes For" label="Number of Options Voted For" title="Party Split by Options Voted For" />
+                <VoteSplitsBarChart col="nays" tooltiptTitle="Votes Against" label="Number of Options Voted Againt" title="Party Split by Options Voted Against" />
             </section>
             <section id="votes-by-party">
                 <h2>Votes by Party</h2>

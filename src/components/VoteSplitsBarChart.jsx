@@ -66,6 +66,9 @@ const VoteSplitsBarChart = (props) => {
     					mode: 'index',
     					intersect: false,
                         filter: val => parseInt(val.value) > 0,
+                        callbacks: {
+                            afterTitle: () => props.tooltiptTitle,
+                        },
     				},
     				responsive: true,
     				scales: {
