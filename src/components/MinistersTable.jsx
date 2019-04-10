@@ -3,14 +3,41 @@ import ReactTable from 'react-table';
 import NumberCell from  './NumberCell';
 import data from '../data';
 
+const PartyFilter = ({ filter, onChange }) =>(
+    <select
+        onChange={event => onChange(event.target.value)}
+        style={{ width: "100%" }}
+        value={filter ? filter.value : "all"}
+        >
+        <option value="all">Show All</option>
+        <option value="Conservative">Conservative</option>
+        <option value="Labour">Labour</option>
+        <option value="Scottish National Party">Scottish National Party</option>
+        <option value="Independent">Independent</option>
+        <option value="Liberal Democrat">Liberal Democrat</option>
+        <option value="Democratic Unionist Party">Democratic Unionist Party</option>
+        <option value="Plaid Cymru">Plaid Cymru</option>
+        <option value="Green Party">Green Party</option>
+    </select>
+);
+
 const columns = [
     {
         Header: 'Name',
         accessor: 'name',
+        filterMethod: (filter, row) => row[filter.id].toLowerCase().indexOf(filter.value) > -1,
     },
     {
         Header: 'Party',
         accessor: 'party',
+        filterMethod: (filter, row) => {
+            if (filter.value === "all") {
+                return true;
+            } else {
+                return filter.value === row[filter.id];
+            }
+        },
+        Filter: PartyFilter,
     },
     {
         Header: 'Ayes',
@@ -43,6 +70,7 @@ const MinistersTable = () => (
             defaultPageSize={700}
             showPagination={false}
             minRows={0}
+            filterable={true}
             />
     </div>
 );
