@@ -23,8 +23,8 @@ const columns = [
     {
         id: 'ayes_nays_ratio',
         Header: 'Ratio Ayes:Nays',
-        accessor: m => m.nays === 0 ? 'N/A' : m.ayes / m.nays,
-        Cell: NumberCell,
+        accessor: m => m.nays === 0 ? 0 : m.ayes / m.nays,
+        Cell: props => props.original.nays === 0 ? 'N/A' : <NumberCell {...props} />,
     },
 ];
 

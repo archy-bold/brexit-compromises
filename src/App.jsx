@@ -45,6 +45,11 @@ const App = () => (
                     The default sorting (by aye:nay ratio) highlights which MP
                     was more likely to vote for options than against.
                 </p>
+                <p>
+                    Note: cabinet ministers were whipped to abstain in the indicative
+                    votes so it was not possible to calculate a ratio for these
+                    ministers.
+                </p>
                 <p>All averages are rounded to the nearest two decimal points.</p>
                 <MinistersTable />
             </div>
