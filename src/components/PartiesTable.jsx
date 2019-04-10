@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table } from "react-bootstrap";
 import ReactTable from 'react-table';
+import NumberCell from  './NumberCell';
 import data from '../data';
 
 const columns = [
@@ -9,7 +10,7 @@ const columns = [
         accessor: 'party',
     },
     {
-        Header: 'Number of Voting MPs',
+        Header: 'Number of MPs',
         accessor: 'num_mps',
     },
     {
@@ -21,16 +22,19 @@ const columns = [
         accessor: 'nays',
     },
     {
-        Header: 'Average Ayes / MP',
+        Header: 'Avg Ayes / MP',
         accessor: 'ayes_per_mp',
+        Cell: NumberCell,
     },
     {
-        Header: 'Average Nays / MP',
+        Header: 'Avg Nays / MP',
         accessor: 'nays_per_mp',
+        Cell: NumberCell,
     },
     {
         Header: 'Ratio Ayes:Nays',
         accessor: 'ayes_nays_ratio',
+        Cell: NumberCell,
     },
 ];
 
