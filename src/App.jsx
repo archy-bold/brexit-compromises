@@ -5,7 +5,7 @@ import MinistersTable from './components/MinistersTable';
 
 const App = () => (
     <div className="App">
-        <Navbar bg="light" expand="lg" sticky="top">
+        <Navbar bg="light" expand="lg" fixed="top">
             <Navbar.Brand href="#home">Jump to</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
@@ -31,7 +31,7 @@ const App = () => (
             </Container>
         </Jumbotron>
         <Container>
-            <div className="mb-4" id="votes-by-party">
+            <section id="votes-by-party">
                 <h2>Votes by Party</h2>
                 <p>
                     This table shows the voting breakdown by party with the final
@@ -44,9 +44,9 @@ const App = () => (
                 </p>
                 <p>All averages are rounded to the nearest two decimal points.</p>
                 <PartiesTable />
-            </div>
+            </section>
 
-            <div className="mb-4" id="votes-by-minister">
+            <section id="votes-by-minister">
                 <h2>Votes by Minister</h2>
                 <p>
                     This table shows the voting breakdown by minister with the final
@@ -63,9 +63,9 @@ const App = () => (
                 </p>
                 <p>All averages are rounded to the nearest two decimal points.</p>
                 <MinistersTable />
-            </div>
+            </section>
 
-            <div className="mb-4" id="credits">
+            <section id="credits">
                 <h2>Credits</h2>
                 <p>
                     Website, data collection and analysis by&nbsp;
@@ -84,7 +84,7 @@ const App = () => (
                     </a>
                 </p>
                 <small>&copy; 2019 Simon Archer</small>
-            </div>
+            </section>
         </Container>
     </div>
 );
