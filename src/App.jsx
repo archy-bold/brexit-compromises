@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Jumbotron, Navbar, Nav } from 'react-bootstrap';
 import PartiesTable from './components/PartiesTable';
 import MinistersTable from './components/MinistersTable';
+import VoteSplitsBarChart from './components/VoteSplitsBarChart';
 
 const App = () => (
     <div className="App">
@@ -10,8 +11,9 @@ const App = () => (
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <Nav.Link href="#votes-by-party">By Party</Nav.Link>
-                    <Nav.Link href="#votes-by-minister">By Minister</Nav.Link>
+                    <Nav.Link href="#ayes-nays-split">Party Splits</Nav.Link>
+                    <Nav.Link href="#votes-by-party">Parties</Nav.Link>
+                    <Nav.Link href="#votes-by-minister">Ministers</Nav.Link>
                     <Nav.Link href="#credits">Credits</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
@@ -31,6 +33,20 @@ const App = () => (
             </Container>
         </Jumbotron>
         <Container>
+            <section id="ayes-nays-split">
+                <h2>For/Against Votes Split by Party</h2>
+                <p>
+                    These charts show how the number of motions that were voted
+                    for or against split down party lines.
+                </p>
+                <p>
+                    There were 15 individual votes and parties that votes for more
+                    motions than they would vote against would be more willing to
+                    compromise on Brexit options.
+                </p>
+                <VoteSplitsBarChart col="ayes" label="Number of Options Voted For" title="Party Split by Options Voted For" />
+                <VoteSplitsBarChart col="nays" label="Number of Options Voted Againt" title="Party Split by Options Voted Against" />
+            </section>
             <section id="votes-by-party">
                 <h2>Votes by Party</h2>
                 <p>
