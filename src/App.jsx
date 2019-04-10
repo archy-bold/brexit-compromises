@@ -1,11 +1,22 @@
 import React from 'react';
-import { Container, Jumbotron } from 'react-bootstrap';
+import { Container, Jumbotron, Navbar, Nav } from 'react-bootstrap';
 import PartiesTable from './components/PartiesTable';
 import MinistersTable from './components/MinistersTable';
 
 const App = () => (
     <div className="App">
-        <Jumbotron>
+        <Navbar bg="light" expand="lg" sticky="top">
+            <Navbar.Brand href="#home">Jump to</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="mr-auto">
+                    <Nav.Link href="#votes-by-party">By Party</Nav.Link>
+                    <Nav.Link href="#votes-by-minister">By Minister</Nav.Link>
+                    <Nav.Link href="#credits">Credits</Nav.Link>
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar>
+        <Jumbotron id="home">
             <Container>
                 <h1>Did my MP Compromise on Brexit?</h1>
                 <p>
@@ -52,6 +63,27 @@ const App = () => (
                 </p>
                 <p>All averages are rounded to the nearest two decimal points.</p>
                 <MinistersTable />
+            </div>
+
+            <div className="mb-4" id="credits">
+                <h2>Credits</h2>
+                <p>
+                    Website, data collection and analysis by&nbsp;
+                    <a href="https://archybold.com" target="_blank" rel="noopener noreferrer">
+                        Simon Archer
+                    </a>.
+                </p>
+                <p>
+                    Find me on&nbsp;
+                    <a href="https://twitter.com/archy_bold" target="_blank" rel="noopener noreferrer">
+                        Twitter
+                    </a>
+                    &nbsp;and the full code is available on&nbsp;
+                    <a href="https://github.com/archy-bold/brexit-compromises" target="_blank" rel="noopener noreferrer">
+                        Github
+                    </a>
+                </p>
+                <small>&copy; 2019 Simon Archer</small>
             </div>
         </Container>
     </div>
