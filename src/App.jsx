@@ -51,11 +51,11 @@ const App = () => (
                 <h2>Votes by Party</h2>
                 <p>
                     This table shows the voting breakdown by party with the final
-                    column showing the ratio of ayes to nays that the average MP
-                    voted for.
+                    column showing the ratio of votes for to votes against that
+                    the average MP voted for.
                 </p>
                 <p>
-                    The default sorting (by aye:nay ratio) highlights which parties
+                    The default sorting (by for:against ratio) highlights which parties
                     were more likely to vote for options than against.
                 </p>
                 <p>All averages are rounded to the nearest two decimal points.</p>
@@ -66,10 +66,11 @@ const App = () => (
                 <h2>Votes by Minister</h2>
                 <p>
                     This table shows the voting breakdown by minister with the final
-                    column showing the ratio of ayes to nays that the MP voted for.
+                    column showing the ratio of votes for to votes against that
+                    the MP voted for.
                 </p>
                 <p>
-                    The default sorting (by aye:nay ratio) highlights which MP
+                    The default sorting (by for:against ratio) highlights which MP
                     was more likely to vote for options than against.
                 </p>
                 <p>

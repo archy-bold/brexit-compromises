@@ -40,16 +40,16 @@ const columns = [
         Filter: PartyFilter,
     },
     {
-        Header: 'Ayes',
+        Header: 'Votes For',
         accessor: 'ayes',
     },
     {
-        Header: 'Nays',
+        Header: 'Votes Against',
         accessor: 'nays',
     },
     {
         id: 'ayes_nays_ratio',
-        Header: 'Ratio Ayes:Nays',
+        Header: 'Ratio For:Against',
         accessor: m => m.nays === 0 ? 0 : m.ayes / m.nays,
         Cell: props => props.original.nays === 0 ? 'N/A' : <NumberCell {...props} />,
     },

@@ -13,25 +13,25 @@ const columns = [
         accessor: 'num_mps',
     },
     {
-        Header: 'Ayes',
+        Header: 'Votes For',
         accessor: 'ayes',
     },
     {
-        Header: 'Nays',
+        Header: 'Votes Against',
         accessor: 'nays',
     },
     {
-        Header: 'Avg Ayes / MP',
+        Header: 'Avg For / MP',
         accessor: 'ayes_per_mp',
         Cell: NumberCell,
     },
     {
-        Header: 'Avg Nays / MP',
+        Header: 'Avg Against / MP',
         accessor: 'nays_per_mp',
         Cell: NumberCell,
     },
     {
-        Header: 'Ratio Ayes:Nays',
+        Header: 'Ratio For:Against',
         accessor: 'ayes_nays_ratio',
         Cell: NumberCell,
     },
