@@ -63,7 +63,12 @@ PARTITION BY id;
 -- Get MPs into a table
 CREATE STREAM MINISTERS_STREAM \
 WITH (VALUE_FORMAT='AVRO') AS \
-SELECT member[0]->_about AS id, memberPrinted->_value AS name, memberParty as party FROM individual_votes \
+SELECT member[0]->_about AS id, memberPrinted->_value AS name, \
+CASE \
+   WHEN memberParty = 'Labour (Co-op)' THEN 'Labour' \
+   ELSE memberParty \
+END AS party \
+FROM individual_votes \
 PARTITION BY id;
 
 CREATE TABLE MINISTERS \
