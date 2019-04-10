@@ -1,0 +1,11 @@
+{
+    "name": "parties-file-sink",
+    "config": {
+        "name": "parties-file-sink",
+        "connector.class": "FileStreamSink",
+        "tasks.max": "1",
+        "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+        "file": "/tmp/parties-file-sink.txt",
+        "topics": "PARTIES"
+    }
+}

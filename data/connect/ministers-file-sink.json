@@ -1,0 +1,11 @@
+{
+    "name": "ministers-file-sink",
+    "config": {
+        "name": "ministers-file-sink",
+        "connector.class": "FileStreamSink",
+        "tasks.max": "1",
+        "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+        "file": "/tmp/ministers-file-sink.txt",
+        "topics": "MINISTERS_PARTIES"
+    }
+}

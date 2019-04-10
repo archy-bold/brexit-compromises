@@ -25,3 +25,7 @@ done
 
 # Create the streams
 ksql < $dir/ksql/streams.ksql
+
+# Start connectors
+# confluent load parties-file-sink -d $dir/connect/parties-file-sink.json
+# confluent load ministers-file-sink -d $dir/connect/ministers-file-sink.json
