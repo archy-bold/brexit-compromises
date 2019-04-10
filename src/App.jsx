@@ -83,6 +83,12 @@ const App = () => (
                         Github
                     </a>
                 </p>
+                <p>
+                    Data collected from the&nbsp;
+                    <a href="http://explore.data.parliament.uk/index.html?endpoint=endpoint/commonsdivisions" target="_blank" rel="noopener noreferrer">
+                        data.parliament.uk website
+                    </a>.
+                </p>
                 <small>&copy; 2019 Simon Archer</small>
             </section>
         </Container>
