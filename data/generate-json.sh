@@ -1,8 +1,8 @@
 #!/bin/bash
 
 declare -A queries=( \
-["parties.json"]="SELECT * FROM PARTIES;" \
-["ministers.json"]="SELECT * FROM MINISTERS_PARTIES;" \
+["parties.json"]="SELECT * FROM PARTIES EMIT CHANGES;" \
+["ministers.json"]="SELECT * FROM MINISTERS_PARTIES EMIT CHANGES;" \
 )
 
 for file in "${!queries[@]}";

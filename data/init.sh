@@ -3,8 +3,8 @@
 dir="${0%/*}"
 
 # Create the topics
-kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic raw-votes
-kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 4 --topic individual-votes
+docker exec -i bc-broker kafka-topics --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic raw-votes
+docker exec -i bc-broker kafka-topics --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 4 --topic individual-votes
 
 # Register the schemas
 declare -A schemas=( \
@@ -24,7 +24,7 @@ do
 done
 
 # Create the streams
-ksql < $dir/ksql/streams.ksql
+docker exec -i bc-ksqldb-cli ksql http://ksqldb-server:8088 < $dir/ksql/streams.ksql
 
 # Start connectors
 # confluent load parties-file-sink -d $dir/connect/parties-file-sink.json
