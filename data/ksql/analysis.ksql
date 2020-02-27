@@ -1,11 +1,11 @@
 -- Find all ministers supporting one or no options
-SELECT * from MINISTERS_PARTIES  WHERE ayes < 2;
+SELECT * from MINISTERS_PARTIES  WHERE ayes < 2 EMIT CHANGES;
 
 -- Which vote did the DUP support?
-SELECT * from VOTES_STREAM WHERE aye = 1 AND party = 'Democratic Unionist Party';
+SELECT * from VOTES_STREAM WHERE aye = 1 AND party = 'Democratic Unionist Party' EMIT CHANGES;
 
 -- One supproting vote by party
-SELECT SUM(ayes), party from MINISTERS_PARTIES  WHERE ayes = 1 GROUP BY party;
+SELECT SUM(ayes), party from MINISTERS_PARTIES  WHERE ayes = 1 GROUP BY party EMIT CHANGES;
 
 -- Other MPs supporting one option
-SELECT name, party, ayes, nays from MINISTERS_PARTIES WHERE ayes = 1 AND nays > 6 AND party != 'Democratic Unionist Party';
+SELECT name, party, ayes, nays from MINISTERS_PARTIES WHERE ayes = 1 AND nays > 6 AND party != 'Democratic Unionist Party' EMIT CHANGES;
