@@ -9,14 +9,14 @@ for file in "${!queries[@]}";
 do
     # curl the data into a json file.
     curl -X "POST" "http://localhost:8088/query" \
-         --max-time 10 \
-         -H "Content-Type: application/vnd.ksql.v1+json; charset=utf-8" \
-         -d $'{
+        --max-time 10 \
+        -H "Content-Type: application/vnd.ksql.v1+json; charset=utf-8" \
+        -d $'{
       "ksql": "'"${queries[$file]}"'",
       "streamsProperties": {
         "ksql.streams.auto.offset.reset": "earliest"
       }
-    }' > $file
+    }' | sed -n '1!p' | sed 's/,$//' > $file
 
     # Remove empty lines
     sed -i -e '/^[[:space:]]*$/d' $file
