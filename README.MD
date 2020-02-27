@@ -40,3 +40,5 @@ You can run your own queries through the ksqlDB cli. To open a cli session, run 
 ```bash
 docker exec -it bc-ksqldb-cli ksql http://ksqldb-server:8088
 ```
+
+© 2019/2020 Simon Archer
